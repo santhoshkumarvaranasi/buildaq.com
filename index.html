@@ -52,9 +52,15 @@
                 <!-- Newsletter Signup -->
                 <div class="newsletter-signup">
                     <h3>Get Early Access</h3>
-                    <form class="newsletter-form" id="newsletterForm">
+                    <form class="newsletter-form" id="newsletterForm" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <!-- Hidden field for spam protection -->
+                        <input type="hidden" name="form-name" value="newsletter">
+                        <div style="display: none;">
+                            <input name="bot-field">
+                        </div>
+                        
                         <div class="input-group">
-                            <input type="email" placeholder="Enter your email address" required id="emailInput">
+                            <input type="email" name="email" placeholder="Enter your email address" required id="emailInput">
                             <button type="submit" class="submit-btn">
                                 <span>Subscribe</span>
                                 <i data-lucide="arrow-right"></i>
@@ -65,6 +71,10 @@
                     <div class="newsletter-success" id="successMessage">
                         <i data-lucide="check-circle"></i>
                         <span>Thanks for subscribing! We'll be in touch soon.</span>
+                    </div>
+                    <div class="newsletter-error" id="errorMessage">
+                        <i data-lucide="alert-circle"></i>
+                        <span>Something went wrong. Please try again.</span>
                     </div>
                 </div>
 
@@ -518,21 +528,37 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <!-- Hidden fields for Netlify Forms -->
+                    <input type="hidden" name="form-name" value="contact">
+                    <div style="display: none;">
+                        <input name="bot-field">
+                    </div>
+                    
                     <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Subject" required>
+                        <input type="text" name="subject" placeholder="Subject" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">
                         <span>Send Message</span>
                         <i data-lucide="send"></i>
                     </button>
+                    
+                    <!-- Success/Error Messages -->
+                    <div class="form-success" id="contactSuccess" style="display: none;">
+                        <i data-lucide="check-circle"></i>
+                        <span>Thank you! Your message has been sent successfully. We'll get back to you soon.</span>
+                    </div>
+                    <div class="form-error" id="contactError" style="display: none;">
+                        <i data-lucide="alert-circle"></i>
+                        <span>Something went wrong. Please try again or email us directly.</span>
+                    </div>
                 </form>
             </div>
         </div>

@@ -236,6 +236,26 @@ body {
     justify-content: center;
 }
 
+.newsletter-error {
+    display: none;
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+    backdrop-filter: blur(10px);
+    color: #ef4444;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.newsletter-success.show,
+.newsletter-error.show {
+    display: flex;
+    animation: slideInUp 0.5s ease-out;
+}
+
 /* Hero Features */
 .hero-features {
     display: grid;
@@ -818,6 +838,37 @@ body {
 .contact-form .submit-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Contact Form Messages */
+.form-success,
+.form-error {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: slideInUp 0.5s ease-out;
+}
+
+.form-success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+}
+
+.form-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.form-success i,
+.form-error i {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
 }
 
 /* Footer */

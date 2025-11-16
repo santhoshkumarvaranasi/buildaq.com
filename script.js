@@ -49,44 +49,59 @@ document.addEventListener('DOMContentLoaded', function() {
     const newsletterForm = document.getElementById('newsletterForm');
     const emailInput = document.getElementById('emailInput');
     const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
     
-    newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Validate email
-        const email = emailInput.value.trim();
-        if (!isValidEmail(email)) {
-            showFormError('Please enter a valid email address');
-            return;
-        }
-        
-        // Simulate API call
-        submitNewsletter(email);
-    });
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate email
+            const email = emailInput.value.trim();
+            if (!isValidEmail(email)) {
+                showNewsletterError('Please enter a valid email address');
+                return;
+            }
+            
+            // Hide any existing messages
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+            
+            // Submit form to Netlify
+            submitNewsletterForm(this);
+        });
+    }
     
     // Contact form submission
     const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Validate required fields
-        if (!data.name || !data.email || !data.subject || !data.message) {
-            showFormError('Please fill in all required fields');
-            return;
-        }
-        
-        if (!isValidEmail(data.email)) {
-            showFormError('Please enter a valid email address');
-            return;
-        }
-        
-        // Simulate API call
-        submitContactForm(data);
-    });
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Validate required fields
+            if (!name || !email || !subject || !message) {
+                showContactError('Please fill in all required fields');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                showContactError('Please enter a valid email address');
+                return;
+            }
+            
+            // Hide any existing messages
+            hideContactMessages();
+            
+            // Submit form to Netlify
+            submitContactForm(this);
+        });
+    }
     
     // Scroll animations
     const observerOptions = {
@@ -344,43 +359,174 @@ function showFormError(message) {
     setTimeout(() => errorDiv.remove(), 5000);
 }
 
-function submitNewsletter(email) {
-    // Simulate API call
-    console.log('Newsletter subscription:', email);
+function showFormError(message) {
+    // Create error message element
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'form-error';
+    errorDiv.textContent = message;
+    errorDiv.style.cssText = `
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #ef4444;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        text-align: center;
+        animation: shake 0.5s ease-in-out;
+    `;
     
-    // Show success message
-    const form = document.querySelector('.newsletter-form');
-    const success = document.getElementById('successMessage');
+    // Remove existing error messages
+    document.querySelectorAll('.form-error').forEach(el => el.remove());
     
-    form.style.display = 'none';
-    success.style.display = 'flex';
+    // Add error message
+    const form = document.activeElement.closest('form');
+    form.insertBefore(errorDiv, form.firstChild);
     
-    // Track event (replace with actual analytics)
-    if (typeof gtag !== 'undefined') {
-        gtag('event', 'newsletter_signup', {
-            event_category: 'engagement',
-            event_label: 'header_newsletter'
-        });
-    }
+    // Remove error after 5 seconds
+    setTimeout(() => errorDiv.remove(), 5000);
 }
 
-function submitContactForm(data) {
-    // Simulate API call
-    console.log('Contact form submission:', data);
+function submitNewsletterForm(form) {
+    const submitBtn = form.querySelector('.submit-btn');
+    const originalText = submitBtn.querySelector('span').textContent;
     
-    // Show success message
-    showSuccessMessage('Thank you for your message! We\'ll get back to you soon.');
+    // Show loading state
+    submitBtn.classList.add('loading');
+    submitBtn.querySelector('span').textContent = 'Subscribing...';
+    submitBtn.disabled = true;
     
-    // Reset form
-    document.getElementById('contactForm').reset();
+    // Submit to Netlify
+    fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+    })
+    .then(response => {
+        if (response.ok) {
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            const newsletterForm = document.querySelector('.newsletter-form');
+            
+            newsletterForm.style.display = 'none';
+            successMessage.classList.add('show');
+            
+            // Track event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'newsletter_signup', {
+                    event_category: 'engagement',
+                    event_label: 'header_newsletter'
+                });
+            }
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    })
+    .catch(error => {
+        console.error('Form submission error:', error);
+        showNewsletterError('Something went wrong. Please try again.');
+    })
+    .finally(() => {
+        // Reset button state
+        submitBtn.classList.remove('loading');
+        submitBtn.querySelector('span').textContent = originalText;
+        submitBtn.disabled = false;
+    });
+}
+
+function submitContactForm(form) {
+    const submitBtn = form.querySelector('.submit-btn');
+    const originalText = submitBtn.querySelector('span').textContent;
     
-    // Track event (replace with actual analytics)
-    if (typeof gtag !== 'undefined') {
-        gtag('event', 'contact_form_submit', {
-            event_category: 'engagement',
-            event_label: 'contact_page'
-        });
-    }
+    // Show loading state
+    submitBtn.classList.add('loading');
+    submitBtn.querySelector('span').textContent = 'Sending...';
+    submitBtn.disabled = true;
+    
+    // Submit to Netlify
+    fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+    })
+    .then(response => {
+        if (response.ok) {
+            // Show success message
+            showContactSuccess('Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
+            
+            // Reset form
+            form.reset();
+            
+            // Track event
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'contact_form_submit', {
+                    event_category: 'engagement',
+                    event_label: 'contact_page'
+                });
+            }
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    })
+    .catch(error => {
+        console.error('Form submission error:', error);
+        showContactError('Something went wrong. Please try again or email us directly at sravani@buildaq.com');
+    })
+    .finally(() => {
+        // Reset button state
+        submitBtn.classList.remove('loading');
+        submitBtn.querySelector('span').textContent = originalText;
+        submitBtn.disabled = false;
+    });
+}
+
+function showNewsletterError(message) {
+    const errorMessage = document.getElementById('errorMessage');
+    errorMessage.querySelector('span').textContent = message;
+    errorMessage.classList.add('show');
+    
+    // Hide after 7 seconds
+    setTimeout(() => {
+        errorMessage.classList.remove('show');
+    }, 7000);
+}
+
+function showContactSuccess(message) {
+    const successDiv = document.getElementById('contactSuccess');
+    successDiv.querySelector('span').textContent = message;
+    successDiv.style.display = 'flex';
+    
+    // Initialize icons
+    lucide.createIcons();
+    
+    // Hide after 10 seconds
+    setTimeout(() => {
+        successDiv.style.display = 'none';
+    }, 10000);
+}
+
+function showContactError(message) {
+    const errorDiv = document.getElementById('contactError');
+    errorDiv.querySelector('span').textContent = message;
+    errorDiv.style.display = 'flex';
+    
+    // Initialize icons
+    lucide.createIcons();
+    
+    // Hide after 8 seconds
+    setTimeout(() => {
+        errorDiv.style.display = 'none';
+    }, 8000);
+}
+
+function hideContactMessages() {
+    document.getElementById('contactSuccess').style.display = 'none';
+    document.getElementById('contactError').style.display = 'none';
+}
+
+// Legacy functions (kept for compatibility)
+function submitNewsletter(email) {
+    // This function is now replaced by submitNewsletterForm
+    console.log('Newsletter subscription:', email);
 }
 
 function showSuccessMessage(message) {
