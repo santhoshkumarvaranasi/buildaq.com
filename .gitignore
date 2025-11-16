@@ -10,6 +10,7 @@ build/
 # Environment variables
 .env
 .env.local
+.env.production
 
 # IDE
 .vscode/
@@ -25,6 +26,16 @@ Thumbs.db
 .azure/
 *.msi
 
+# Business/Private docs
+PROJECT_CONTEXT.md
+BUSINESS_PLAN.md
+PRIVATE_NOTES.md
+
 # Temporary files
 *.tmp
 *.temp
+
+# Large installers
+*.msi
+*.exe
+*.dmg

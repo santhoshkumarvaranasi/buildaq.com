@@ -1,135 +1,77 @@
-# BuildAQ Test Website
+# 🚀 BuildAQ - Official Website
 
-Simple coming soon page for BuildAQ domain.
+**Building Adaptive Intelligence for the Future**
 
-## Local Testing
+A modern, responsive coming soon page for BuildAQ - showcasing our expertise in Cloud Solutions, AI Integration, and Smart Applications.
 
-Open `index.html` in your browser to preview locally.
+## ✨ Features
 
-## Deploy to Azure Static Web Apps
+- 🎨 **Modern Design** - Clean gradient-based UI with smooth animations
+- 📱 **Responsive Layout** - Optimized for all devices and screen sizes  
+- ⚡ **Fast Loading** - Lightweight static site with optimized assets
+- 🔒 **Secure** - HTTPS enabled with modern security headers
+- 🌐 **SEO Optimized** - Meta tags and semantic HTML structure
 
-### Method 1: Using Azure Portal (Easiest)
+## 🛠️ Tech Stack
 
-1. **Login to Azure Portal**
-   - Go to https://portal.azure.com
-   - Sign in with your account
+- **Frontend:** Pure HTML5, CSS3, JavaScript
+- **Hosting:** GitHub Pages with custom domain
+- **CI/CD:** GitHub Actions for automated deployment
+- **Domain:** buildaq.com (Namecheap managed)
 
-2. **Create Static Web App**
-   - Click "Create a resource"
-   - Search for "Static Web Apps"
-   - Click "Create"
-   - Fill in:
-     - Subscription: Your subscription
-     - Resource Group: Create new → "buildaq-rg"
-     - Name: buildaq
-     - Region: Southeast Asia
-     - Deployment source: "Other"
-   - Click "Review + Create" → "Create"
+## 🎯 Services Offered
 
-3. **Upload Files**
-   - Once created, go to the resource
-   - Note the deployment URL (something like: https://buildaq.azurestaticapps.net)
-   - You can deploy via:
-     - GitHub (connect repository)
-     - Azure CLI (see below)
-     - VS Code extension
+- **Custom Web Development** - Modern, scalable web applications
+- **Cloud Solutions** - Azure migration and deployment expertise  
+- **AI Integration** - Machine learning and intelligent automation
+- **Technical Consulting** - Architecture design and optimization
 
-### Method 2: Using Azure CLI
+## 🚀 Quick Start
 
-1. **Install Azure CLI** (if not already installed)
-   ```powershell
-   winget install Microsoft.AzureCLI
-   ```
+### View Live Site
+Visit: **[buildaq.com](https://buildaq.com)**
 
-2. **Login to Azure**
-   ```powershell
-   az login
-   ```
+### Local Development
+```bash
+# Clone the repository
+git clone https://github.com/santhoshkumarvaranasi/buildaq.com.git
 
-3. **Create Resource Group**
-   ```powershell
-   az group create --name buildaq-rg --location southeastasia
-   ```
+# Navigate to directory
+cd buildaq.com
 
-4. **Create Static Web App**
-   ```powershell
-   az staticwebapp create --name buildaq --resource-group buildaq-rg --source . --location southeastasia --branch main --app-location / --output-location /
-   ```
-
-5. **Deploy**
-   ```powershell
-   az staticwebapp deploy --name buildaq --resource-group buildaq-rg --source .
-   ```
-
-### Method 3: Using VS Code Extension
-
-1. Install "Azure Static Web Apps" extension in VS Code
-2. Click Azure icon in sidebar
-3. Sign in to Azure
-4. Right-click on "Static Web Apps" → "Create Static Web App"
-5. Follow prompts
-6. Deploy your files
-
-## Link Custom Domain (buildaq.com)
-
-### In Azure:
-
-1. Go to your Static Web App in Azure Portal
-2. Click "Custom domains" in left menu
-3. Click "+ Add"
-4. Enter: `buildaq.com`
-5. Azure will provide DNS records (either CNAME or TXT)
-
-### In Namecheap:
-
-1. Login to Namecheap
-2. Go to Domain List → buildaq.com → Manage
-3. Click "Advanced DNS" tab
-4. Add the DNS records provided by Azure:
-
-**Option A - CNAME (for www):**
-```
-Type: CNAME Record
-Host: www
-Value: [your-app].azurestaticapps.net
-TTL: Automatic
+# Open in browser
+open index.html
 ```
 
-**Option B - For root domain (@):**
-```
-Type: ALIAS or ANAME Record (if supported)
-Host: @
-Value: [your-app].azurestaticapps.net
-```
+## 📂 Project Structure
 
-**If ALIAS not supported, use URL Redirect:**
 ```
-Type: URL Redirect
-Host: @
-Value: https://www.buildaq.com
+buildaq.com/
+├── index.html              # Main landing page
+├── styles.css              # Styling and animations
+├── staticwebapp.config.json # Azure Static Web Apps config
+├── .github/workflows/       # GitHub Actions CI/CD
+└── README.md               # This file
 ```
 
-5. Save changes
-6. Wait 10-60 minutes for DNS propagation
+## 🌟 Design Highlights
 
-## Test Your Website
+- **Purple Gradient Theme** - Professional and modern color scheme
+- **Animated Elements** - Subtle hover effects and transitions
+- **Mobile-First** - Responsive design principles
+- **Accessibility** - Semantic HTML and proper contrast ratios
 
-Once deployed and DNS is updated:
-- Visit: https://buildaq.com
-- You should see your coming soon page!
+## 📧 Contact
 
-## Files in This Project
+**BuildAQ Team**  
+🌐 Website: [buildaq.com](https://buildaq.com)  
+📧 Email: contact@buildaq.com  
+💼 LinkedIn: [BuildAQ](https://linkedin.com/company/buildaq)
 
-- `index.html` - Main HTML page
-- `styles.css` - Styling
-- `staticwebapp.config.json` - Azure Static Web Apps configuration
-- `README.md` - This file
+## 📜 License
 
-## Next Steps
+© 2025 BuildAQ. All rights reserved.
 
-Once this test page is live, you can:
-1. Replace it with full portfolio website
-2. Add more pages
-3. Set up contact forms
-4. Add analytics
-5. Create blog section
+---
+
+**Ready to build the future together? Let's connect!** 🚀
