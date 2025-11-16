@@ -239,7 +239,7 @@ body {
 /* Hero Features */
 .hero-features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 4rem;
     animation: fadeInUp 0.8s ease-out 0.8s both;
@@ -248,11 +248,15 @@ body {
 .feature-item {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 16px;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
     text-align: left;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .feature-item:hover {
@@ -275,10 +279,15 @@ body {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
+    line-height: 1.3;
 }
 
 .feature-content p {
     opacity: 0.9;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 /* Services Section */
@@ -694,6 +703,23 @@ body {
     
     .hero-features {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+    
+    .feature-item {
+        padding: 1.5rem;
+        min-height: 140px;
+        text-align: center;
+    }
+    
+    .feature-content h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .feature-content p {
+        font-size: 0.9rem;
     }
     
     .about-content {
