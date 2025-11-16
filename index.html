@@ -29,6 +29,7 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -155,6 +156,283 @@
                         <li>Compliance frameworks</li>
                         <li>Threat monitoring</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Portfolio</h2>
+                <p>Showcasing successful projects and innovative solutions</p>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="ai">AI & ML</button>
+                <button class="filter-btn" data-filter="cloud">Cloud Solutions</button>
+                <button class="filter-btn" data-filter="web">Web Applications</button>
+                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="ai">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Smart Analytics Dashboard</h3>
+                                <p>AI-powered business intelligence platform with predictive analytics</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">TensorFlow</span>
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">AWS</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="action-btn" onclick="openPortfolioModal('project1')">
+                                    <i data-lucide="eye"></i> View Details
+                                </button>
+                            </div>
+                        </div>
+                        <div class="portfolio-placeholder">
+                            <i data-lucide="bar-chart-3"></i>
+                            <span>Analytics Platform</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="cloud">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Cloud Migration Platform</h3>
+                                <p>Automated cloud migration solution with zero-downtime deployment</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Azure</span>
+                                    <span class="tech-tag">Kubernetes</span>
+                                    <span class="tech-tag">Docker</span>
+                                    <span class="tech-tag">Terraform</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="action-btn" onclick="openPortfolioModal('project2')">
+                                    <i data-lucide="eye"></i> View Details
+                                </button>
+                            </div>
+                        </div>
+                        <div class="portfolio-placeholder">
+                            <i data-lucide="cloud-upload"></i>
+                            <span>Cloud Migration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>E-commerce Platform</h3>
+                                <p>Scalable e-commerce solution with real-time inventory management</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">Next.js</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">Redis</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="action-btn" onclick="openPortfolioModal('project3')">
+                                    <i data-lucide="eye"></i> View Details
+                                </button>
+                            </div>
+                        </div>
+                        <div class="portfolio-placeholder">
+                            <i data-lucide="shopping-cart"></i>
+                            <span>E-commerce Platform</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Health Monitoring App</h3>
+                                <p>IoT-enabled health monitoring with AI-driven insights</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">React Native</span>
+                                    <span class="tech-tag">IoT</span>
+                                    <span class="tech-tag">Machine Learning</span>
+                                    <span class="tech-tag">Firebase</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="action-btn" onclick="openPortfolioModal('project4')">
+                                    <i data-lucide="eye"></i> View Details
+                                </button>
+                            </div>
+                        </div>
+                        <div class="portfolio-placeholder">
+                            <i data-lucide="heart-pulse"></i>
+                            <span>Health App</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="ai">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Chatbot Assistant</h3>
+                                <p>AI-powered customer service chatbot with natural language processing</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">NLP</span>
+                                    <span class="tech-tag">OpenAI</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">WebSocket</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="action-btn" onclick="openPortfolioModal('project5')">
+                                    <i data-lucide="eye"></i> View Details
+                                </button>
+                            </div>
+                        </div>
+                        <div class="portfolio-placeholder">
+                            <i data-lucide="message-circle"></i>
+                            <span>AI Chatbot</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="cloud">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h3>Microservices Architecture</h3>
+                                <p>Scalable microservices platform with API gateway and service mesh</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Go</span>
+                                    <span class="tech-tag">gRPC</span>
+                                    <span class="tech-tag">Istio</span>
+                                    <span class="tech-tag">Prometheus</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-actions">
+                                <button class="action-btn" onclick="openPortfolioModal('project6')">
+                                    <i data-lucide="eye"></i> View Details
+                                </button>
+                            </div>
+                        </div>
+                        <div class="portfolio-placeholder">
+                            <i data-lucide="network"></i>
+                            <span>Microservices</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="tech-stack">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Technology Stack</h2>
+                <p>Cutting-edge technologies we use to build exceptional solutions</p>
+            </div>
+            <div class="tech-categories">
+                <div class="tech-category">
+                    <h3><i data-lucide="brain"></i> AI & Machine Learning</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <span>Python</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="95"></div></div>
+                        </div>
+                        <div class="tech-item">
+                            <span>TensorFlow</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="90"></div></div>
+                        </div>
+                        <div class="tech-item">
+                            <span>PyTorch</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="85"></div></div>
+                        </div>
+                        <div class="tech-item">
+                            <span>OpenAI</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="88"></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3><i data-lucide="cloud"></i> Cloud & DevOps</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <span>AWS</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="92"></div></div>
+                        </div>
+                        <div class="tech-item">
+                            <span>Azure</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="88"></div></div>
+                        </div>
+                        <div class="tech-item">
+                            <span>Kubernetes</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="86"></div></div>
+                        </div>
+                        <div class="tech-item">
+                            <span>Docker</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="90"></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3><i data-lucide="code"></i> Development</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <span>React</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="93"></div></div>
+                        </div>
+                        <div class="tech-item">
+                            <span>Node.js</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="89"></div></div>
+                        </div>
+                        <div class="tech-item">
+                            <span>TypeScript</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="87"></div></div>
+                        </div>
+                        <div class="tech-item">
+                            <span>Go</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="84"></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3><i data-lucide="database"></i> Data & Storage</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <span>PostgreSQL</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="91"></div></div>
+                        </div>
+                        <div class="tech-item">
+                            <span>MongoDB</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="86"></div></div>
+                        </div>
+                        <div class="tech-item">
+                            <span>Redis</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="88"></div></div>
+                        </div>
+                        <div class="tech-item">
+                            <span>Elasticsearch</span>
+                            <div class="skill-bar"><div class="skill-fill" data-skill="83"></div></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

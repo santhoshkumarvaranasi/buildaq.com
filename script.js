@@ -162,6 +162,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Portfolio Filtering System
+    initPortfolioFiltering();
+    
+    // Animate skill bars when in view
+    initSkillBarAnimation();
+    
     // Add loading animation to buttons
     document.querySelectorAll('.submit-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -178,6 +184,132 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Portfolio Filtering Functions
+function initPortfolioFiltering() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(button => button.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            const filter = btn.getAttribute('data-filter');
+            
+            portfolioItems.forEach(item => {
+                if (filter === 'all') {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    if (item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                }
+            });
+        });
+    });
+}
+
+// Skill Bar Animation
+function initSkillBarAnimation() {
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillFills = entry.target.querySelectorAll('.skill-fill');
+                skillFills.forEach(fill => {
+                    const skillLevel = fill.getAttribute('data-skill');
+                    setTimeout(() => {
+                        fill.style.width = skillLevel + '%';
+                    }, 200);
+                });
+                skillObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    const techSection = document.querySelector('.tech-stack');
+    if (techSection) {
+        skillObserver.observe(techSection);
+    }
+}
+
+// Portfolio Modal Function (placeholder for future implementation)
+function openPortfolioModal(projectId) {
+    const projectData = {
+        project1: {
+            title: "Smart Analytics Dashboard",
+            description: "A comprehensive AI-powered business intelligence platform that provides real-time analytics and predictive insights for enterprise clients.",
+            technologies: ["Python", "TensorFlow", "React", "AWS", "PostgreSQL", "Redis"],
+            challenges: "Complex data integration from multiple sources, real-time processing requirements, and scalable architecture.",
+            solution: "Implemented microservices architecture with event-driven data processing and machine learning pipelines.",
+            results: "40% improvement in decision-making speed, 60% reduction in manual reporting, and 99.9% uptime."
+        },
+        project2: {
+            title: "Cloud Migration Platform",
+            description: "Automated cloud migration solution that enables seamless transition from on-premises to cloud infrastructure with zero downtime.",
+            technologies: ["Azure", "Kubernetes", "Docker", "Terraform", "Go", "Prometheus"],
+            challenges: "Zero-downtime migration, data consistency, and automated rollback mechanisms.",
+            solution: "Blue-green deployment strategy with automated health checks and intelligent traffic routing.",
+            results: "100% successful migrations, 80% reduction in migration time, and 50% cost savings."
+        }
+        // Add more project details as needed
+    };
+    
+    const project = projectData[projectId];
+    if (project) {
+        // For now, show an alert. In future, implement a proper modal
+        alert(`${project.title}\n\n${project.description}\n\nTechnologies: ${project.technologies.join(', ')}\n\nResults: ${project.results}`);
+    }
+}
+
+// Add portfolio item animations
+const style2 = document.createElement('style');
+style2.textContent += `
+    .portfolio-item {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.3s ease;
+    }
+    
+    .skill-fill {
+        position: relative;
+    }
+    
+    .skill-fill::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transform: translateX(-100%);
+        animation: shimmer 2s ease-in-out;
+        animation-delay: 1s;
+    }
+    
+    @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+`;
+document.head.appendChild(style2);
 
 // Utility functions
 function isValidEmail(email) {
