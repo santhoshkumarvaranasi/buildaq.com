@@ -52,12 +52,10 @@
                 <!-- Newsletter Signup -->
                 <div class="newsletter-signup">
                     <h3>Get Early Access</h3>
-                    <form class="newsletter-form" id="newsletterForm" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <!-- Hidden field for spam protection -->
-                        <input type="hidden" name="form-name" value="newsletter">
-                        <div style="display: none;">
-                            <input name="bot-field">
-                        </div>
+                    <form class="newsletter-form" action="https://formspree.io/f/YOUR_NEWSLETTER_FORM_ID" method="POST">
+                        <!-- Hidden fields for Formspree -->
+                        <input type="hidden" name="_subject" value="Newsletter Subscription - BuildAQ">
+                        <input type="hidden" name="_next" value="https://buildaq.com/success.html">
                         
                         <div class="input-group">
                             <input type="email" name="email" placeholder="Enter your email address" required id="emailInput">
@@ -528,12 +526,10 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                    <!-- Hidden fields for Netlify Forms -->
-                    <input type="hidden" name="form-name" value="contact">
-                    <div style="display: none;">
-                        <input name="bot-field">
-                    </div>
+                <form class="contact-form" action="https://formspree.io/f/YOUR_CONTACT_FORM_ID" method="POST">
+                    <!-- Hidden fields for Formspree -->
+                    <input type="hidden" name="_subject" value="New Contact Form Submission - BuildAQ">
+                    <input type="hidden" name="_next" value="https://buildaq.com/success.html">
                     
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Your Name" required>
