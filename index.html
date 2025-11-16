@@ -18,17 +18,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
-    <!-- Google Analytics -->
+    <!-- Google Analytics with Domain Protection -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YT9ZBKTDHH"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-YT9ZBKTDHH', {
-            page_title: 'BuildAQ - Building Adaptive Intelligence',
-            page_location: window.location.href,
-            send_page_view: true
-        });
+        // Only load analytics from buildaq.com domain
+        if (window.location.hostname === 'buildaq.com' || window.location.hostname === 'www.buildaq.com') {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YT9ZBKTDHH', {
+                page_title: 'BuildAQ - Building Adaptive Intelligence',
+                page_location: window.location.href,
+                send_page_view: true,
+                // Additional security
+                cookie_domain: 'buildaq.com',
+                cookie_flags: 'SameSite=Strict;Secure'
+            });
+        } else {
+            console.log('Analytics blocked - unauthorized domain');
+        }
     </script>
 </head>
 <body>
