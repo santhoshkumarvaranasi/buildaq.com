@@ -44,41 +44,108 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Forms now use Formspree - simple validation only
-    // Newsletter form basic validation
+    // Forms now use Formspree - AJAX submission to stay on page
+    // Newsletter form with AJAX
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
+        newsletterForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
             const emailInput = this.querySelector('input[name="email"]');
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
             if (!isValidEmail(emailInput.value.trim())) {
-                e.preventDefault();
                 alert('Please enter a valid email address');
                 return false;
             }
-            // Formspree handles the rest
+            
+            // Show loading state
+            submitBtn.innerHTML = '<span>Subscribing...</span>';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(this);
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    this.innerHTML = `
+                        <div style="text-align: center; padding: 2rem; background: rgba(34, 197, 94, 0.1); border-radius: 8px; border: 1px solid rgba(34, 197, 94, 0.3);">
+                            <div style="font-size: 2rem; color: #22c55e; margin-bottom: 1rem;">✓</div>
+                            <h3 style="color: #22c55e; margin-bottom: 0.5rem;">Thank you for subscribing!</h3>
+                            <p style="color: #666; margin: 0;">We'll keep you updated with our latest news and insights.</p>
+                        </div>
+                    `;
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                alert('Something went wrong. Please try again later.');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
         });
     }
     
-    // Contact form basic validation
+    // Contact form with AJAX
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
             const name = this.querySelector('input[name="name"]').value.trim();
             const email = this.querySelector('input[name="email"]').value.trim();
             const message = this.querySelector('textarea[name="message"]').value.trim();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
             
             if (!name || !email || !message) {
-                e.preventDefault();
                 alert('Please fill in all required fields');
                 return false;
             }
             
             if (!isValidEmail(email)) {
-                e.preventDefault();
                 alert('Please enter a valid email address');
                 return false;
             }
-            // Formspree handles the rest
+            
+            // Show loading state
+            submitBtn.innerHTML = '<span>Sending...</span>';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(this);
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    this.innerHTML = `
+                        <div style="text-align: center; padding: 3rem; background: rgba(34, 197, 94, 0.1); border-radius: 12px; border: 1px solid rgba(34, 197, 94, 0.3);">
+                            <div style="font-size: 3rem; color: #22c55e; margin-bottom: 1rem;">✓</div>
+                            <h3 style="color: #22c55e; margin-bottom: 1rem;">Message Sent Successfully!</h3>
+                            <p style="color: #666; margin-bottom: 2rem; line-height: 1.6;">Thank you for reaching out to BuildAQ. We've received your message and will get back to you within 24 hours.</p>
+                            <button onclick="location.reload()" style="background: #22c55e; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: 500;">Send Another Message</button>
+                        </div>
+                    `;
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                alert('Something went wrong. Please try again later.');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
         });
     }
 
