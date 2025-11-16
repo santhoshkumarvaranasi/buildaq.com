@@ -390,3 +390,326 @@ function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
+
+// Demo Application Functions
+function showDemoDetails(appType) {
+    const demoDetails = {
+        schools: {
+            title: "Schools Management Portal",
+            description: "A comprehensive educational institution management system featuring student enrollment, teacher management, course scheduling, and analytics dashboard. Built with Angular 18 and Module Federation for scalable micro-frontend architecture.",
+            features: [
+                "Student Information System (SIS)",
+                "Teacher & Staff Management",
+                "Course & Schedule Management",
+                "Attendance Tracking",
+                "Grade Management",
+                "Parent Portal Integration",
+                "Analytics & Reporting",
+                "Multi-tenant Architecture"
+            ],
+            tech: ["Angular 18", "TypeScript", "Module Federation", "RxJS", "Angular Material", "Chart.js", "Azure Active Directory", "RESTful APIs"],
+            status: "Live and fully functional",
+            demoUrl: "https://schools.buildaq.com"
+        },
+        healthcare: {
+            title: "Healthcare Management System",
+            description: "Advanced healthcare facility management platform with patient records, appointment scheduling, telemedicine integration, and AI-powered diagnostics support.",
+            features: [
+                "Electronic Health Records (EHR)",
+                "Patient Registration & Management",
+                "Appointment Scheduling",
+                "Telemedicine Integration",
+                "Prescription Management",
+                "Laboratory Information System",
+                "Billing & Insurance",
+                "AI-Assisted Diagnostics"
+            ],
+            tech: ["Angular", "Node.js", "MongoDB", "Socket.io", "FHIR", "Machine Learning", "Azure Health Bot", "Secure Messaging"],
+            status: "In Development - Q2 2025",
+            demoUrl: null
+        },
+        realestate: {
+            title: "Real Estate Management Portal",
+            description: "Modern property management platform featuring virtual property tours, CRM integration, market analytics, and automated property valuation models.",
+            features: [
+                "Property Listing Management",
+                "3D Virtual Tours",
+                "CRM & Lead Management",
+                "Market Analytics Dashboard",
+                "Automated Valuation Models",
+                "Document Management",
+                "Financial Reporting",
+                "Mobile Apps for Agents"
+            ],
+            tech: ["React", "Three.js", "Python", "TensorFlow", "PostgreSQL", "GIS Integration", "Stripe Payments", "AWS Services"],
+            status: "Planning Phase - Q3 2025",
+            demoUrl: null
+        }
+    };
+
+    const details = demoDetails[appType];
+    if (!details) return;
+
+    // Create modal HTML
+    const modalHTML = `
+        <div class="demo-modal-overlay" onclick="closeDemoModal()">
+            <div class="demo-modal" onclick="event.stopPropagation()">
+                <div class="demo-modal-header">
+                    <h2>${details.title}</h2>
+                    <button class="modal-close-btn" onclick="closeDemoModal()">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="demo-modal-content">
+                    <div class="demo-modal-description">
+                        <p>${details.description}</p>
+                        <div class="demo-status">
+                            <strong>Status:</strong> <span class="status-text">${details.status}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-modal-section">
+                        <h3>Key Features</h3>
+                        <ul class="feature-list">
+                            ${details.features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="demo-modal-section">
+                        <h3>Technology Stack</h3>
+                        <div class="tech-grid">
+                            ${details.tech.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+                    
+                    ${details.demoUrl ? `
+                        <div class="demo-modal-actions">
+                            <a href="${details.demoUrl}" target="_blank" class="demo-btn primary">
+                                <i data-lucide="external-link"></i>
+                                <span>Launch Demo</span>
+                            </a>
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Add modal to page
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    // Initialize icons in modal
+    lucide.createIcons();
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+
+    // Track demo interaction
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'demo_details_view', {
+            'demo_type': appType,
+            'event_category': 'demo_interaction'
+        });
+    }
+}
+
+function closeDemoModal() {
+    const modal = document.querySelector('.demo-modal-overlay');
+    if (modal) {
+        modal.remove();
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Handle demo launch clicks
+function trackDemoLaunch(appType, url) {
+    // Track demo launch
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'demo_launch', {
+            'demo_type': appType,
+            'demo_url': url,
+            'event_category': 'demo_interaction'
+        });
+    }
+    
+    // Open in new tab
+    window.open(url, '_blank');
+}
+
+// Add modal styles dynamically
+const demoModalStyles = `
+<style>
+.demo-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.demo-modal {
+    background: white;
+    border-radius: 20px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.demo-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem 1rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.demo-modal-header h2 {
+    color: #1e293b;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.modal-close-btn:hover {
+    background: #f1f5f9;
+    color: #334155;
+}
+
+.demo-modal-content {
+    padding: 2rem;
+}
+
+.demo-modal-description p {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.demo-status {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+}
+
+.demo-status .status-text {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.demo-modal-section {
+    margin-bottom: 2rem;
+}
+
+.demo-modal-section h3 {
+    color: #1e293b;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.feature-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.5rem;
+}
+
+.feature-list li {
+    padding: 0.5rem 0;
+    color: #64748b;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+}
+
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-badge {
+    background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+    color: #667eea;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.demo-modal-actions {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .demo-modal {
+        width: 95%;
+        margin: 1rem;
+    }
+    
+    .demo-modal-header,
+    .demo-modal-content {
+        padding: 1.5rem;
+    }
+    
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+`;
+
+// Add styles to head
+if (!document.querySelector('#demo-modal-styles')) {
+    const styleElement = document.createElement('div');
+    styleElement.id = 'demo-modal-styles';
+    styleElement.innerHTML = demoModalStyles;
+    document.head.appendChild(styleElement);
+}

@@ -51,6 +51,7 @@
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#demo" class="nav-link">Live Demos</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -362,6 +363,153 @@
                             <i data-lucide="network"></i>
                             <span>Microservices</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Applications Section -->
+    <section id="demo" class="live-demo">
+        <div class="container">
+            <div class="section-header">
+                <h2>Live Demo Applications</h2>
+                <p>Experience our micro-frontend architecture in action with these live applications</p>
+            </div>
+            
+            <div class="demo-grid">
+                <div class="demo-card featured">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i data-lucide="graduation-cap"></i>
+                        </div>
+                        <div class="demo-badge">Live</div>
+                    </div>
+                    <div class="demo-content">
+                        <h3>Schools Management Portal</h3>
+                        <p>Complete educational institution management system built with Angular 18 and Module Federation architecture.</p>
+                        <div class="demo-features">
+                            <span class="feature-tag">Student Management</span>
+                            <span class="feature-tag">Teacher Portal</span>
+                            <span class="feature-tag">Analytics Dashboard</span>
+                            <span class="feature-tag">Real-time Data</span>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Angular 18</span>
+                            <span class="tech-tag">Module Federation</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Azure</span>
+                        </div>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="https://schools.buildaq.com" target="_blank" class="demo-btn primary">
+                            <i data-lucide="external-link"></i>
+                            <span>Launch Demo</span>
+                        </a>
+                        <button class="demo-btn secondary" onclick="showDemoDetails('schools')">
+                            <i data-lucide="info"></i>
+                            <span>View Details</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i data-lucide="heart-pulse"></i>
+                        </div>
+                        <div class="demo-badge coming-soon">Coming Soon</div>
+                    </div>
+                    <div class="demo-content">
+                        <h3>Healthcare Management</h3>
+                        <p>Comprehensive healthcare facility management with patient records, appointment scheduling, and telemedicine integration.</p>
+                        <div class="demo-features">
+                            <span class="feature-tag">Patient Records</span>
+                            <span class="feature-tag">Appointment System</span>
+                            <span class="feature-tag">Telemedicine</span>
+                            <span class="feature-tag">AI Diagnostics</span>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Angular 18</span>
+                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">FHIR</span>
+                            <span class="tech-tag">Cloud</span>
+                        </div>
+                    </div>
+                    <div class="demo-actions">
+                        <button class="demo-btn disabled">
+                            <i data-lucide="clock"></i>
+                            <span>Coming Soon</span>
+                        </button>
+                        <button class="demo-btn secondary" onclick="showDemoDetails('healthcare')">
+                            <i data-lucide="info"></i>
+                            <span>Learn More</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i data-lucide="building"></i>
+                        </div>
+                        <div class="demo-badge coming-soon">Coming Soon</div>
+                    </div>
+                    <div class="demo-content">
+                        <h3>Real Estate Portal</h3>
+                        <p>Modern property management platform with virtual tours, CRM integration, and market analytics for real estate professionals.</p>
+                        <div class="demo-features">
+                            <span class="feature-tag">Property Listings</span>
+                            <span class="feature-tag">Virtual Tours</span>
+                            <span class="feature-tag">CRM Integration</span>
+                            <span class="feature-tag">Market Analytics</span>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">3D Graphics</span>
+                            <span class="tech-tag">GIS</span>
+                            <span class="tech-tag">Analytics</span>
+                        </div>
+                    </div>
+                    <div class="demo-actions">
+                        <button class="demo-btn disabled">
+                            <i data-lucide="clock"></i>
+                            <span>Coming Soon</span>
+                        </button>
+                        <button class="demo-btn secondary" onclick="showDemoDetails('realestate')">
+                            <i data-lucide="info"></i>
+                            <span>Learn More</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-info">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Micro-Frontend Architecture</h4>
+                        <p>Each application is built as an independent micro-frontend using Module Federation, enabling autonomous development and deployment.</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Enterprise Security</h4>
+                        <p>Built with enterprise-grade security including OAuth 2.0, RBAC, and end-to-end encryption for all sensitive data.</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Scalable Infrastructure</h4>
+                        <p>Cloud-native architecture with auto-scaling, load balancing, and global CDN distribution for optimal performance.</p>
                     </div>
                 </div>
             </div>
