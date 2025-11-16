@@ -1,8 +1,23 @@
-# 🚀 BuildAQ - Official Website
+# BuildAQ Corporate Website
 
 **Building Adaptive Intelligence for the Future**
 
-A modern, responsive coming soon page for BuildAQ - showcasing our expertise in Cloud Solutions, AI Integration, and Smart Applications.
+This repository contains the corporate website for BuildAQ, showcasing our business solutions and company portfolio.
+
+**Live Site**: [https://buildaq.com](https://buildaq.com)
+
+## Repository Purpose
+
+This repository is focused ONLY on the corporate marketing website. 
+
+**Independent Business Domains:**
+- 🏫 Schools: `buildaq-schools` repository → schools.buildaq.com
+- 🏥 Hospital: `buildaq-hospital` repository → hospital.buildaq.com  
+- 🛒 Retail: `buildaq-retail` repository → retail.buildaq.com
+- 💰 Finance: `buildaq-finance` repository → finance.buildaq.com
+- 📦 Logistics: `buildaq-logistics` repository → logistics.buildaq.com
+- 👥 HRMS: `buildaq-hrms` repository → hrms.buildaq.com
+- 🤝 CRM: `buildaq-crm` repository → crm.buildaq.com
 
 ## ✨ Features
 
@@ -12,35 +27,36 @@ A modern, responsive coming soon page for BuildAQ - showcasing our expertise in 
 - 🔒 **Secure** - HTTPS enabled with modern security headers
 - 🌐 **SEO Optimized** - Meta tags and semantic HTML structure
 
-## 🛠️ Tech Stack
+## Technology Stack
 
-- **Frontend:** Pure HTML5, CSS3, JavaScript
-- **Hosting:** GitHub Pages with custom domain
-- **CI/CD:** GitHub Actions for automated deployment
-- **Domain:** buildaq.com (Namecheap managed)
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Deployment**: GitHub Pages
+- **Domain**: buildaq.com
+- **CI/CD**: GitHub Actions (simple static deployment)
 
-## 🎯 Services Offered
+## Services Offered by BuildAQ
 
 - **Custom Web Development** - Modern, scalable web applications
 - **Cloud Solutions** - Azure migration and deployment expertise  
 - **AI Integration** - Machine learning and intelligent automation
 - **Technical Consulting** - Architecture design and optimization
 
-## 🚀 Quick Start
+Each business domain operates as a completely independent application with its own repository, tech stack, and infrastructure. See `buildaq-independent-architecture.md` for details.
 
-### View Live Site
-Visit: **[buildaq.com](https://buildaq.com)**
+## Development
 
-### Local Development
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/santhoshkumarvaranasi/buildaq.com.git
-
-# Navigate to directory
 cd buildaq.com
 
-# Open in browser
-open index.html
+# Make changes to index.html, styles.css, script.js
+# Test locally by opening index.html in browser
+
+# Commit and push (auto-deploys via GitHub Actions)
+git add .
+git commit -m "Update corporate website"
+git push origin main
 ```
 
 ## 📂 Project Structure
@@ -61,12 +77,23 @@ buildaq.com/
 - **Mobile-First** - Responsive design principles
 - **Accessibility** - Semantic HTML and proper contrast ratios
 
-## 📧 Contact
+## Contact
 
 **BuildAQ Team**  
 🌐 Website: [buildaq.com](https://buildaq.com)  
-📧 Email: contact@buildaq.com  
-💼 LinkedIn: [BuildAQ](https://linkedin.com/company/buildaq)
+📧 Email: varanasi.santhoshkumar@gmail.com
+
+## Architecture
+
+Each business domain operates as a completely independent application with its own repository, tech stack, and infrastructure. This approach provides:
+
+1. **Maximum Flexibility** - Each domain can choose its own technology
+2. **Independent Scaling** - Domains scale based on their usage
+3. **Team Separation** - Different teams can own different domains  
+4. **Business Model Flexibility** - Each domain can have its own pricing
+5. **Future Exit Strategy** - Domains can be sold or spun off independently
+
+For detailed architecture documentation, see `buildaq-independent-architecture.md`
 
 ## 📜 License
 
