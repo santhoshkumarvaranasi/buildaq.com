@@ -3,38 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BuildAQ - Building Adaptive Intelligence for the Future">
-    <title>BuildAQ - Coming Soon</title>
+    <meta name="description" content="BuildAQ - Building Adaptive Intelligence for the Future. Expert cloud solutions, AI integration, and smart applications for modern businesses.">
+    <meta name="keywords" content="BuildAQ, AI, Cloud Solutions, Software Development, Adaptive Intelligence, Smart Applications">
+    <meta name="author" content="BuildAQ">
+    <meta property="og:title" content="BuildAQ - Building Adaptive Intelligence">
+    <meta property="og:description" content="Expert cloud solutions, AI integration, and smart applications for modern businesses.">
+    <meta property="og:image" content="https://buildaq.com/assets/og-image.png">
+    <meta property="og:url" content="https://buildaq.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>BuildAQ - Building Adaptive Intelligence for the Future</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <div class="logo">⚡</div>
-            <div class="badge">BuildAQ</div>
-            <h1>Coming Soon</h1>
-            <p class="tagline">Building Adaptive Intelligence for the Future</p>
-            <div class="features">
-                <div class="feature">
-                    <span class="icon">🚀</span>
-                    <p>Cloud Solutions</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">BuildAQ</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">BuildAQ</div>
+                <h1 class="hero-title">Building Adaptive Intelligence for the Future</h1>
+                <p class="hero-subtitle">Transform your business with cutting-edge AI solutions, cloud architecture, and smart applications designed for tomorrow's challenges.</p>
+                
+                <!-- Newsletter Signup -->
+                <div class="newsletter-signup">
+                    <h3>Get Early Access</h3>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="input-group">
+                            <input type="email" placeholder="Enter your email address" required id="emailInput">
+                            <button type="submit" class="submit-btn">
+                                <span>Subscribe</span>
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                        <p class="newsletter-privacy">We respect your privacy. Unsubscribe anytime.</p>
+                    </form>
+                    <div class="newsletter-success" id="successMessage">
+                        <i data-lucide="check-circle"></i>
+                        <span>Thanks for subscribing! We'll be in touch soon.</span>
+                    </div>
                 </div>
-                <div class="feature">
-                    <span class="icon">🤖</span>
-                    <p>AI Integration</p>
-                </div>
-                <div class="feature">
-                    <span class="icon">⚙️</span>
-                    <p>Smart Applications</p>
+
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i data-lucide="cloud"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Cloud Solutions</h4>
+                            <p>Scalable cloud architecture and deployment</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i data-lucide="brain"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>AI Integration</h4>
+                            <p>Smart automation and intelligent systems</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Smart Applications</h4>
+                            <p>Custom software solutions that adapt</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p class="info">
-                We're crafting something amazing. Stay tuned!
-            </p>
         </div>
-        <footer>
-            <p>&copy; 2025 BuildAQ. All rights reserved.</p>
-        </footer>
-    </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Comprehensive solutions for modern business challenges</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="cloud-cog"></i>
+                    </div>
+                    <h3>Cloud Architecture</h3>
+                    <p>Design and implement scalable cloud infrastructure that grows with your business needs.</p>
+                    <ul class="service-features">
+                        <li>AWS & Azure expertise</li>
+                        <li>Microservices architecture</li>
+                        <li>DevOps automation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="bot"></i>
+                    </div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Integrate intelligent automation and data-driven insights into your workflows.</p>
+                    <ul class="service-features">
+                        <li>Custom ML models</li>
+                        <li>Natural language processing</li>
+                        <li>Predictive analytics</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="smartphone"></i>
+                    </div>
+                    <h3>Smart Applications</h3>
+                    <p>Build adaptive software that learns and evolves with user behavior and business needs.</p>
+                    <ul class="service-features">
+                        <li>Progressive web apps</li>
+                        <li>Mobile-first design</li>
+                        <li>Real-time capabilities</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <h3>Security & Compliance</h3>
+                    <p>Ensure your systems are secure, compliant, and protected against evolving threats.</p>
+                    <ul class="service-features">
+                        <li>Security auditing</li>
+                        <li>Compliance frameworks</li>
+                        <li>Threat monitoring</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About BuildAQ</h2>
+                    <p class="about-lead">We're building the future of adaptive intelligence, one solution at a time.</p>
+                    <p>At BuildAQ, we believe technology should adapt to human needs, not the other way around. Our team of experts specializes in creating intelligent systems that learn, evolve, and scale with your business.</p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Projects Delivered</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">99%</div>
+                            <div class="stat-label">Client Satisfaction</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support Available</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="visual-element">
+                        <div class="floating-card">
+                            <i data-lucide="trending-up"></i>
+                            <span>AI-Powered Growth</span>
+                        </div>
+                        <div class="floating-card">
+                            <i data-lucide="globe"></i>
+                            <span>Global Reach</span>
+                        </div>
+                        <div class="floating-card">
+                            <i data-lucide="lock"></i>
+                            <span>Enterprise Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Ready to transform your business? Let's discuss your project.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>hello@buildaq.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="phone"></i>
+                        </div>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>San Francisco, CA</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <i data-lucide="send"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-icon">⚡</span>
+                        <span class="logo-text">BuildAQ</span>
+                    </div>
+                    <p>Building Adaptive Intelligence for the Future</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                        <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#services">Cloud Architecture</a></li>
+                            <li><a href="#services">AI Integration</a></li>
+                            <li><a href="#services">Smart Applications</a></li>
+                            <li><a href="#services">Security & Compliance</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BuildAQ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

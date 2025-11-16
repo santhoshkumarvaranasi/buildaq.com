@@ -1,0 +1,54 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BuildAQ",
+  "description": "Building Adaptive Intelligence for the Future - Expert cloud solutions, AI integration, and smart applications for modern businesses.",
+  "url": "https://buildaq.com",
+  "logo": "https://buildaq.com/assets/logo.png",
+  "foundingDate": "2025",
+  "founders": [
+    {
+      "@type": "Person",
+      "name": "BuildAQ Team"
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "San Francisco",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "email": "hello@buildaq.com",
+    "telephone": "+1-555-123-4567"
+  },
+  "sameAs": [
+    "https://twitter.com/buildaq",
+    "https://linkedin.com/company/buildaq",
+    "https://github.com/buildaq"
+  ],
+  "services": [
+    {
+      "@type": "Service",
+      "name": "Cloud Architecture",
+      "description": "Design and implement scalable cloud infrastructure"
+    },
+    {
+      "@type": "Service", 
+      "name": "AI & Machine Learning",
+      "description": "Integrate intelligent automation and data-driven insights"
+    },
+    {
+      "@type": "Service",
+      "name": "Smart Applications",
+      "description": "Build adaptive software that learns and evolves"
+    },
+    {
+      "@type": "Service",
+      "name": "Security & Compliance", 
+      "description": "Ensure systems are secure and compliant"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://buildaq.com/sitemap.xml
+
+# Block search engine crawlers from accessing certain files
+Disallow: /scripts/
+Disallow: *.log
+Disallow: /temp/
+Disallow: /private/
+
+# Allow all content for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot  
+Allow: /
+
+User-agent: Slurp
+Allow: /
