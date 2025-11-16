@@ -14,15 +14,15 @@
   ],
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "San Francisco",
-    "addressRegion": "CA",
-    "addressCountry": "US"
+    "addressLocality": "Bangalore",
+    "addressRegion": "Karnataka",
+    "addressCountry": "IN"
   },
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "customer service",
     "email": "hello@buildaq.com",
-    "telephone": "+1-555-123-4567"
+    "telephone": "+91-9885051988"
   },
   "sameAs": [
     "https://twitter.com/buildaq",
