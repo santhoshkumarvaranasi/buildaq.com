@@ -63,11 +63,15 @@ git push origin main
 
 ```
 buildaq.com/
-├── index.html              # Main landing page
-├── styles.css              # Styling and animations
-├── staticwebapp.config.json # Azure Static Web Apps config
-├── .github/workflows/       # GitHub Actions CI/CD
-└── README.md               # This file
+├── index.html                              # Main corporate website
+├── styles.css                              # Website styling and animations  
+├── script.js                               # Website functionality
+├── success.html                            # Contact form success page
+├── .github/workflows/deploy.yml            # Simple GitHub Pages deployment
+├── staticwebapp.config.json                # Azure Static Web Apps config
+├── CNAME                                    # Custom domain configuration
+├── buildaq-independent-architecture.md     # Architecture documentation
+└── README.md                               # This documentation
 ```
 
 ## 🌟 Design Highlights
