@@ -74,6 +74,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 if (response.ok) {
+                    // Track successful newsletter signup
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'newsletter_signup', {
+                            event_category: 'engagement',
+                            event_label: 'header_newsletter',
+                            value: 1
+                        });
+                    }
+                    
                     // Show success message
                     this.innerHTML = `
                         <div style="text-align: center; padding: 2rem; background: rgba(34, 197, 94, 0.1); border-radius: 8px; border: 1px solid rgba(34, 197, 94, 0.3);">
@@ -129,6 +138,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 if (response.ok) {
+                    // Track successful contact form submission
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'contact_form_submit', {
+                            event_category: 'engagement',
+                            event_label: 'contact_page',
+                            value: 1
+                        });
+                    }
+                    
                     // Show success message
                     this.innerHTML = `
                         <div style="text-align: center; padding: 3rem; background: rgba(34, 197, 94, 0.1); border-radius: 12px; border: 1px solid rgba(34, 197, 94, 0.3);">
@@ -287,6 +305,84 @@ document.addEventListener('DOMContentLoaded', function() {
         
         lastScrollY = currentScrollY;
     });
+    
+    // Enhanced Analytics Tracking
+    if (typeof gtag !== 'undefined') {
+        // Track scroll depth
+        let scrollDepth = 0;
+        window.addEventListener('scroll', () => {
+            const currentDepth = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            
+            // Track 25%, 50%, 75%, 100% scroll milestones
+            if (currentDepth >= 25 && scrollDepth < 25) {
+                gtag('event', 'scroll', { 'percent_scrolled': 25 });
+                scrollDepth = 25;
+            } else if (currentDepth >= 50 && scrollDepth < 50) {
+                gtag('event', 'scroll', { 'percent_scrolled': 50 });
+                scrollDepth = 50;
+            } else if (currentDepth >= 75 && scrollDepth < 75) {
+                gtag('event', 'scroll', { 'percent_scrolled': 75 });
+                scrollDepth = 75;
+            } else if (currentDepth >= 90 && scrollDepth < 90) {
+                gtag('event', 'scroll', { 'percent_scrolled': 100 });
+                scrollDepth = 90;
+            }
+        });
+        
+        // Track section views
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionName = entry.target.id || entry.target.className.split(' ')[0];
+                    gtag('event', 'section_view', {
+                        'section_name': sectionName,
+                        'event_category': 'engagement'
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        // Observe main sections
+        document.querySelectorAll('section[id], .hero, .services, .portfolio, .tech-stack, .about, .contact').forEach(section => {
+            sectionObserver.observe(section);
+        });
+        
+        // Track time on page
+        let startTime = Date.now();
+        let timeTracked = false;
+        
+        // Track 30 seconds, 1 minute, 3 minutes engagement
+        setTimeout(() => {
+            if (!timeTracked) {
+                gtag('event', 'timing_complete', {
+                    'name': 'time_on_page',
+                    'value': 30000,
+                    'event_category': 'engagement'
+                });
+            }
+        }, 30000);
+        
+        setTimeout(() => {
+            if (!timeTracked) {
+                gtag('event', 'timing_complete', {
+                    'name': 'time_on_page',
+                    'value': 60000,
+                    'event_category': 'engagement'
+                });
+            }
+        }, 60000);
+        
+        setTimeout(() => {
+            if (!timeTracked) {
+                gtag('event', 'timing_complete', {
+                    'name': 'time_on_page',
+                    'value': 180000,
+                    'event_category': 'engagement'
+                });
+                timeTracked = true;
+            }
+        }, 180000);
+    }
 });
 
 // Email validation function
