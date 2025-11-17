@@ -286,26 +286,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Header scroll effect
-    const header = document.querySelector('.header');
+    const header = document.querySelector('.navbar');
     let lastScrollY = window.scrollY;
     
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        
-        if (currentScrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-        
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-            header.classList.add('hidden');
-        } else {
-            header.classList.remove('hidden');
-        }
-        
-        lastScrollY = currentScrollY;
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+    }
     
     // Enhanced Analytics Tracking
     if (typeof gtag !== 'undefined') {
