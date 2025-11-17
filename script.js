@@ -4,28 +4,28 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Mobile navigation
     const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+    const navMenu = document.querySelector('.nav-menu');
     
-    if (hamburger && navLinks) {
+    if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
         
         // Close mobile menu when clicking on links
-        const navLinksList = document.querySelectorAll('.nav-links a');
-        navLinksList.forEach(link => {
+        const navMenuLinks = document.querySelectorAll('.nav-menu a');
+        navMenuLinks.forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
+                navMenu.classList.remove('active');
             });
         });
         
         // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
                 hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
+                navMenu.classList.remove('active');
             }
         });
     }
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Portfolio filtering
-    const filterButtons = document.querySelectorAll('.portfolio-filter');
+    const filterButtons = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
 
     filterButtons.forEach(button => {
@@ -181,7 +181,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Filter items
             portfolioItems.forEach(item => {
-                if (filter === 'all' || item.classList.contains(filter)) {
+                const itemCategory = item.getAttribute('data-category');
+                if (filter === 'all' || itemCategory === filter) {
                     item.style.display = 'block';
                     setTimeout(() => {
                         item.style.opacity = '1';
